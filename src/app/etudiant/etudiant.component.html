@@ -1,0 +1,232 @@
+<link rel="stylesheet" href="../../app/etudiant/etudiant.component.css">
+<title>{{title}}</title>
+<main>
+    <body>
+        <div>
+            <!-- slider  -->
+            <div class=" h-screen absolute left-0 top-25 right-25 bottom-0 ">
+                <!-- container -->
+            
+                <aside
+                    class="flex flex-col items-center w-80 bg-white text-gray-700 shadow h-full ">
+                    <!-- Side Nav Bar-->
+            
+                    <div class="h-16 flex items-center w-full">
+                        <!-- Logo Section -->
+                    
+                            <img
+                                class="h-24 w-32 mx-auto"
+                                src="../../assets/ucad5.webp"
+                                alt="svelte logo" />
+                    
+                    </div>
+            
+                    <ul class="m-5 text-white">
+                        <!-- Items Section -->
+                        <li class="bg-blue-900 w-56 hover:text-white text-2xl m-5">
+                            <a
+                                href="etudiant"
+                                class="h-16 px-6  flex justify-center items-center w-full
+                                focus:text-orange-500">
+                                EVALUATION 
+                            </a>
+                        </li>
+            
+                        <li class="bg-blue-900 w-56 text-center hover:text-white text-2xl m-5">
+                            <a
+                                href="enseignement"
+                                class="h-16 px-6 flex justify-center items-center w-full
+                                focus:text-orange-500">
+                                ENSEIGNEMENT
+                            </a>
+                        </li>
+            
+                    
+          
+
+                    </ul>
+            
+                    <div class="mt-auto h-16  items-center w-full  text-white">
+                        <!-- Action Section -->
+                       <a href="Acceuil"> <button
+                            class="h-16  mx-auto flex  justify-center items-center
+                            w-full  bg-blue-900 w-56 focus:outline-none">
+                            <svg
+                                class="h-5 w-5 text-white hover:text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                                
+                        </button>
+                    </a>
+
+                    </div>
+            
+                </aside>
+            </div>
+
+                 <!-- content -->
+            <div class="bg h-screen ml-80 ">
+
+                         
+                    <div class="border border-blue-300 p-3">
+                        <h1 class="border-b-2 border-blue-500 text-xl font-bold mb-4">Formulaire d'évaluation de l'enseignement</h1>
+                        
+                        <form (ngSubmit)="submitForm(evaform)" #evaform="ngForm">
+                            <div class="flex flex-wrap">
+                              <div class="w-1/2">
+                                <div class="mt-4 bg-blue">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">ID_MODULE</span>
+                                    <input type="text" name="module_id" class="ml-2 border-y-cyan-950 bg-blue-900 text-white w-80 h-11" placeholder="id_module(consulter enseignement)" [(ngModel)]="evaluation.module_id"/>
+                                  </label>
+                                </div>
+                                <h2 class="border-b-2 border-gray-300 pb-2">Présentation de l'enseignement</h2>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">1. Le syllabus est-il fourni?</span>
+                                    <select name="syllabus" class="ml-2" [(ngModel)]="evaluation.syllabus">
+                                      <option value="oui">OUI</option>
+                                      <option value="non">NON</option>
+                                    </select>
+                                  </label>
+                                </div>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">2. Les objectifs du cours sont-ils clairement énoncés dans le syllabus?</span>
+                                    <select name="objectifs" class="ml-2" [(ngModel)]="evaluation.objectifs">
+                                      <option value="oui">OUI</option>
+                                      <option value="non">NON</option>
+                                    </select>
+                                  </label>
+                                </div>
+                              </div>
+                              
+                              <div class="w-1/2">
+                                <h2 class="border-b-2 border-gray-300 pb-2 mt-4">Déroulement de l'enseignement</h2>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">1. Le contenu du cours est-il conforme aux objectifs énoncés dans le syllabus?</span>
+                                    <select name="contenu" class="ml-2" [(ngModel)]="evaluation.contenu">
+                                      <option value="pas_conforme">Pas conforme</option>
+                                      <option value="moyennement_conforme">Moyennement conforme</option>
+                                    </select>
+                                  </label>
+                                </div>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">2. Le support de cours est-il fourni?</span>
+                                    <select name="support" class="ml-2" [(ngModel)]="evaluation.support">
+                                      <option value="oui">OUI</option>
+                                      <option value="non">NON</option>
+                                    </select>
+                                  </label>
+                                </div>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">3. Le contenu du cours mentionné dans le syllabus a-t-il été respecté?</span>
+                                    <select name="respect_contenu" class="ml-2" [(ngModel)]="evaluation.respect_contenu">
+                                      <option value="oui">OUI</option>
+                                      <option value="non">NON</option>
+                                    </select>
+                                  </label>
+                                </div>
+                                
+                                <div class="mt-4">
+                                  <label class="inline-flex items-center">
+                                    <span class="mr-2">4. Le volume horaire a-t-il été respecté?</span>
+                                    <select name="volume_horaire" class="ml-2" [(ngModel)]="evaluation.volume_horaire">
+                                      <option value="oui">OUI</option>
+                                      <option value="non">NON</option>
+                                    </select>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="flex flex-wrap">
+                              <div class="w-1/2">
+                                <h2 class="border-b-2 border-gray-300 pb-2 mt-4">Matériel</h2>
+                                
+                                <div class="mt-4">
+                                  <p>Évaluez les éléments suivants en sélectionnant l'option appropriée :</p>
+                                  
+                                  <label class="block mt-2">Vidéo projecteur:
+                                    <select name="video_projecteur" class="mt-2" [(ngModel)]="evaluation.video_projecteur">
+                                      <option value="mauvais">Mauvais</option>
+                                      <option value="satisfaisant">Satisfaisant</option>
+                                      <option value="bon">Bon</option>
+                                      <option value="excellent">Excellent</option>
+                                    </select>
+                                  </label>
+                                  
+                                  <label class="block mt-2">Matériel informatique:
+                                    <select name="materiel_informatique" class="mt-2" [(ngModel)]="evaluation.materiel_informatique">
+                                      <option value="mauvais">Mauvais</option>
+                                      <option value="satisfaisant">Satisfaisant</option>
+                                      <option value="bon">Bon</option>
+                                      <option value="excellent">Excellent</option>
+                                    </select>
+                                  </label>
+                               
+                                </div>
+                              </div>
+                              
+                              <div class="w-1/2">
+                                <h2 class="border-b-2 border-gray-300 pb-2 mt-4">Evaluation de l'enseignant</h2>
+                                
+                                <div class="mt-4">
+                                  <p>Évaluez les éléments suivants en sélectionnant l'option appropriée :</p>
+                                  
+                                  <label class="block mt-2">Compétences pédagogiques:
+                                    <select name="competences_pedagogiques" class="mt-2" [(ngModel)]="evaluation.competences_pedagogiques">
+                                      <option value="mauvais">Mauvais</option>
+                                      <option value="satisfaisant">Satisfaisant</option>
+                                      <option value="bon">Bon</option>
+                                      <option value="excellent">Excellent</option>
+                                    </select>
+                                  </label>
+                                  
+                                  <label class="block mt-2">Clarté des explications:
+                                    <select name="clarte_explications" class="mt-2" [(ngModel)]="evaluation.clarte_explications">
+                                      <option value="mauvaise">Mauvaise</option>
+                                      <option value="satisfaisante">Satisfaisante</option>
+                                      <option value="bonne">Bonne</option>
+                                      <option value="excellente">Excellente</option>
+                                    </select>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                              <label class="inline-flex items-center">
+                                <span class="mr-2">Commentaires supplémentaires:</span>
+                                <textarea name="commentaires" rows="4" class="w-full border-y-cyan-950 bg-blue-900 text-white" placeholder="Commentaires supplémentaires" [(ngModel)]="evaluation.commentaires"></textarea>
+                              </label>
+                            </div>
+                            
+                            <div class="mt-4">
+                              <button type="submit" class="bg-blue-900 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded">Submit</button>
+                            </div>
+                          </form>
+                    </div>
+            </div>
+        </div>
+    </body>
+</main>

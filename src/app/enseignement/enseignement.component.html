@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="../../app/enseignement/enseignement.component.css">
+<title>{{title}}</title>
+<main>
+    <body>
+        <div>
+                   <!-- sidebar-->
+            <div class=" h-screen absolute left-0 top-25 right-25 bottom-0 ">
+
+                  <aside
+                class="flex flex-col items-center w-80 bg-white text-gray-700 shadow h-full ">
+                <!-- Side Nav Bar-->
+        
+                <div class="h-16 flex items-center w-full">
+                    <!-- Logo Section -->
+                
+                        <img
+                            class="h-24 w-32 mx-auto"
+                            src="../../assets/ucad5.webp"
+                            alt="svelte logo" />
+                
+                </div>
+        
+                <ul class="m-5 text-white">
+                    <!-- Items Section -->
+                    <li class="bg-blue-900 w-56 hover:text-white text-2xl m-5">
+                        <a
+                            href="etudiant"
+                            class="h-16 px-6  flex justify-center items-center w-full
+                            focus:text-orange-500">
+                            EVALUATION 
+                        </a>
+                    </li>
+        
+                    <li class="bg-blue-900 w-56 text-center hover:text-white text-2xl m-5">
+                        <a
+                            href="enseignement"
+                            class="h-16 px-6 flex justify-center items-center w-full
+                            focus:text-orange-500">
+                            ENSEIGNEMENT
+                        </a>
+                    </li>
+        
+                
+      
+
+                </ul>
+        
+                <div class="mt-auto h-16  items-center w-full  text-white">
+                    <!-- Action Section -->
+                   <a href="Acceuil"> <button
+                        class="h-16  mx-auto flex  justify-center items-center
+                        w-full  bg-blue-900 w-56 focus:outline-none">
+                        <svg
+                            class="h-5 w-5 text-white hover:text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                            
+                    </button>
+                </a>
+
+                </div>
+        
+                  </aside>
+
+            </div>
+            <div class="bg h-screen ml-80 ">
+
+                <table class="min-w-full bg-white border border-gray-300 z-20">
+                    <thead>
+                      <tr>
+                        <th class="px-6 py-3 bg-blue-100 border-b">ID_MODULE</th>
+                        <th class="px-6 py-3 bg-blue-100 border-b">NOM_MODULE</th>
+                        <th class="px-6 py-3 bg-blue-100 border-b">ENSEIGNANT</th>
+                        <th class="px-6 py-3 bg-blue-100 border-b">NOMBRE_D'HEURE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of data" class="border-b">
+                        <td class="px-6 py-4 text-center text-2xl bg-slate-600 ">{{ item.id }}</td>
+                        <td class="px-6 py-4 text-center text-2xl bg-slate-600">{{ item.nom_module }}</td>
+                        <td class="px-6 py-4 text-center text-2xl bg-slate-600">{{ item.enseignant }}</td>
+                        <td class="px-6 py-4 text-center text-2xl bg-slate-600">{{ item.desc }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </body>
+
+
+</main>
