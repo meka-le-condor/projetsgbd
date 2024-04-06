@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="absence.component.css">
+<main><body>
+    <div>
+
+
+          <!-- slider  -->
+        <div class=" h-screen absolute left-0 top-25 right-25 bottom-0 ">
+            <!-- container -->
+        
+            <aside
+                class="flex flex-col items-center w-80 bg-white text-gray-700 shadow h-full ">
+                <!-- Side Nav Bar-->
+        
+                <div class="h-16 flex items-center w-full">
+                    <!-- Logo Section -->
+                
+                        <img
+                            class="h-24 w-32 mx-auto"
+                            src="../../assets/ucad5.webp"
+                            alt="svelte logo" />
+                
+                </div>
+        
+                <ul class="m-5 text-white">
+                    <!-- Items Section -->
+                    <li class="bg-blue-900 w-56 text-center hover:text-white text-2xl m-5">
+                        <a
+                            href="absence"
+                            class="h-16 px-6  flex justify-center items-center w-full
+                            focus:text-orange-500">
+                           RELEVER ABSENCE
+                        </a>
+                    </li>
+        
+                    <li class="bg-blue-900 w-56 text-center hover:text-white text-2xl m-5">
+                        <a
+                            href="cahierdetext"
+                            class="h-16 px-6 flex justify-center items-center w-full
+                            focus:text-orange-500">
+                            CAHIER DE TEXTE
+                        </a>
+                    </li>
+                    <li class="bg-blue-900 w-56 text-center hover:text-white text-2xl m-5">
+                        <a
+                            href="suivievaluation"
+                            class="h-16 px-6 flex justify-center items-center w-full
+                            focus:text-orange-500">
+                            SUIVI FICHE EVALUATION
+                        </a>
+                    </li>
+                
+      
+
+                </ul>
+        
+                <div class="mt-auto h-16  items-center w-full  text-white">
+                    <!-- Action Section -->
+                   <a href="Acceuil"> <button
+                        class="h-16  mx-auto flex  justify-center items-center
+                        w-full  bg-blue-900 w-56 focus:outline-none">
+                        <svg
+                            class="h-5 w-5 text-white hover:text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                            
+                    </button>
+                </a>
+
+                </div>
+        
+            </aside>
+        </div>
+
+        <div class="bg h-screen ml-80 flex">
+    <!---formulaire de relever-->
+               <div>
+                        <div class="h-4/6 mt-32 w-full ml-24 ">
+                            <div class="flex justify-center items-center h-5/6 mt-9  ">
+                            <div class="max-w-md w-full bg-blue-50 shadow-md p-8">
+                                <h1 class="text-2xl font-bold mb-6">Formulaire de Cahier de Texte</h1>
+                                <form (ngSubmit)="submitForm(abs)" #abs="ngForm">
+                                    <div class="mb-4">
+                                      <label for="date" class="block font-medium">Date :</label>
+                                      <input type="date" id="date" name="date" class="form-input mt-2 block w-full h-9" [(ngModel)]="absence.date" required>
+                                    </div>
+                                    <div class="mb-4">
+                                      <label for="classe" class="block font-medium">Classe :</label>
+                                      <input type="text" id="classe" name="classe" class="form-input mt-1 block w-full h-9" [(ngModel)]="absence.classe" required>
+                                    </div>
+                                    <div class="mb-4">
+                                      <label for="module" class="block font-medium">Nom du module :</label>
+                                      <input type="text" id="module" name="module" class="form-input mt-1 block w-full h-9" [(ngModel)]="absence.module" required>
+                                    </div>
+                                    <div class="mb-4">
+                                      <label for="enseignant" class="block font-medium">Enseignant :</label>
+                                      <input type="text" id="enseignant" name="enseignant" class="form-input mt-1 block w-full h-9" [(ngModel)]="absence.enseignant" required>
+                                    </div>
+                                    <div class="mb-4">
+                                      <label for="eleves" class="block font-medium">Élèves absents :</label>
+                                      <textarea id="eleves" name="eleves" class="form-textarea mt-1 block w-full" [(ngModel)]="absence.eleves" ></textarea>
+                                    </div>
+                                    <div>
+                                      <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Envoyer</button>
+                                    </div>
+                                  </form>
+                            </div>
+                            </div>
+                        </div>
+               </div>
+    <!---affichage absens-->
+
+               <div>
+                <div class=" h-screen w-full ml-80"> 
+                    <a href="absence"><button class=" h-11"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                  </svg>
+                  </button></a>
+                    <table class=" bg-blue-50 border border-gray-300 z-20 ">
+                        <thead>
+                            <tr>
+                             <th class="px-0 py-2">listes absences</th>
+                              <th class="px-0 py-2">Date/heure</th>
+                              <th class="px-4 py-2">Matière</th>
+                              <th class="px-4 py-2">Enseignant</th>
+                              <th class="px-4 py-2">Classe</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                          <tr *ngFor="let item of data" class="border-b">
+                            <td class="px-6 py-4 text-center  bg-slate-600" > <button (click)="openDetails(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                              </svg></button>
+                               </td>
+                            <td class="px-6 py-4 text-center  bg-slate-600 ">{{ item.date }}</td>
+                            <td class="px-6 py-4 text-center  bg-slate-600">{{ item.module }}</td>
+                            <td class="px-6 py-4 text-center  bg-slate-600">{{ item.enseignant }}</td>
+                             <td class="px-6 py-4 text-center  bg-slate-600">{{item.classe}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <!-- fenetre detail-->
+                      <div *ngIf="selectedItem" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+                        <div class="bg-white p-8 rounded-lg shadow-lg">
+                          <h2 class="text-2xl font-bold mb-4">LISTES DES ABSENTS</h2>
+                          <table class="w-full mb-4">
+                          
+                            <tr>
+                              <td class="font-bold pr-2">ELEVES:</td>
+                              <td>{{ selectedItem.eleves }}</td>
+                            </tr>
+                           
+                            <!-- Add more rows for additional information -->
+                          </table>
+                          <button class="px-4 py-2 bg-blue-500 text-white rounded" (click)="closeDetails()">Fermer</button>
+                        </div>
+                      </div>
+                   </div>
+               </div>
+        </div>
+    </div>
+</body></main>

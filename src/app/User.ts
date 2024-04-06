@@ -24,3 +24,21 @@ export class User {
     public clarte_explications!: string;
     public commentaires!: string;
   }
+  export class Cahierdetext {
+    date!: string;
+    matiere!: string;
+    enseignant!: string;
+    activite1!: string;
+    activite2!: string;
+    activite3!: string;
+    remarques!: string;
+    classe!: string;
+  }
+  export class absence {
+    date!: string;
+    module!: string;
+    enseignant!: string;
+    classe!: string;
+    eleves!: string;
+   
+  }

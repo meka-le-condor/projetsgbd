@@ -43,7 +43,7 @@ app.post('/api/register', (req, res) => {
     }
   });
 });
-
+//enregistrer les donnee evaluation des profs
 app.post('/api/etudianteva', (req, res) => {
   const evaform = req.body; // Supposons que vous récupérez les données de l'évaluation à partir de la requête POST
 
@@ -64,7 +64,7 @@ app.post('/api/etudianteva', (req, res) => {
     }
   });
 });
-
+//login
 app.post('/api/login', (req, res) => {
   const { email, password } = req.body;
 
@@ -108,10 +108,117 @@ app.get('/data',(req,res)=>{
   
   
 
-})
+});
+
+//recuperer donnee cahier de txt
+app.post('/api/cdt',(req,res)=>{
+
+ // Récupération des données du formulaire
+ const cahierdetext = req.body;
+
+ // Requête d'insertion
+ const query = 'INSERT INTO cahierdetext (date, matiere, enseignant, activite1, activite2, activite3, remarques,classe) VALUES (?, ?, ?, ?, ?, ?, ?,?)';
+ const values = [cahierdetext.date, cahierdetext.matiere, cahierdetext.enseignant, cahierdetext.activite1, cahierdetext.activite2, cahierdetext.activite3, cahierdetext.remarques,cahierdetext.classe];
+
+ connection.query(query, values, (err, result) => {
+  console.log(cahierdetext)
+   if (err) {
+     console.error('Erreur lors de l\'insertion des données :', err);
+     return;
+   }
+   console.log('Données insérées avec succès !');
+   res.sendStatus(200);
+ });
+  
+
+});
+
+
+//recupereer les donnee cdt
+app.get('/cdt',(req,res)=>{
+
+  const resq=`SELECT *FROM cahierdetext`;
+  connection.query(resq,(err,result)=>{
+    console.log(result);
+    if(result.length>0){
+      res.json({ success : true ,message:'' ,  data:result})
+
+
+    }else{
+      err.json(()=>{console.log('data not found')})
+
+    }
+
+  })
+  
+
+});
+
+//recuper eva
+app.get('/eva', (req, res) => {
+  const resq = 'SELECT * FROM evaluation';
+  connection.query(resq, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Internal server error' });
+    } else {
+      if (result.length > 0) {
+        const moduleIds = result.map(evaluation => evaluation.module_id);
+        const reqmodule = 'SELECT * FROM module WHERE id IN (?)';
+        connection.query(reqmodule, [moduleIds], (err, resultm) => {
+          if (err) {
+            console.error(err);
+            res.status(500).json({ success: false, message: 'Internal server error' });
+          } else { console.log(resultm)
+            res.json({ success: true, message: '', data: result, datam: resultm });
+          }
+        });
+      } else {
+        res.json({ success: true, message: 'No data found', data: [] });
+      }
+    }
+  });
+});
+
+//enregitrer absence
+app.post('/absence', (req, res) => {
+  const absence = req.body;
+
+  // Insérer les données d'absence dans la base de données
+  const query = `INSERT INTO Absence (date, module, enseignant, classe, eleves) VALUES (?, ?, ?, ?, ?)`;
+  const values = [absence.date, absence.module, absence.enseignant, absence.classe, absence.eleves];
+  connection.query(query, values, (err, result) => {
+    if (err) {
+      console.error('Erreur lors de l\'insertion des données :', err);
+      res.status(500).json({ error: 'Une erreur s\'est produite lors de l\'enregistrement des données' });
+    } else {
+      console.log('Données d\'absence enregistrées avec succès');
+      res.json({ success: true });
+    }
+  });
+});
+//recuperer absenc
+app.get('/data/absence',(req,res)=>{
+
+  const resq=`SELECT *FROM absence`;
+  connection.query(resq,(err,result)=>{
+    console.log(result);
+    if(result.length>0){
+      res.json({ success : true ,message:'' ,  data:result})
+
+
+    }else{
+      res.json(()=>{console.log('data not found')})
+
+    }
+
+  })
+  
+
+});
 
 // Lancer le serveur
 const port = 3000; // Remplacez par le port de votre choix
 app.listen(port, () => {
   console.log(`Serveur démarré sur le port ${port}`);
-});
+}); 
