@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="ic">
+    <file>icons/cil-menu.png</file>
+  </qresource>
+</RCC>
